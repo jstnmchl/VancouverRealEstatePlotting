@@ -10,6 +10,8 @@ Data can be scraped for different property types, including: detached, townhomes
 
 Demo video/image shows median sale price for detached homes sold in 2022.
 
+Implemented using BeautifulSoup, with help from Selenium, for scraping and GeoPandas/Folium for visualization.
+
 ## Setup
 
 Install Anaconda or miniconda. (See Note 1)
