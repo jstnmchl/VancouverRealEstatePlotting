@@ -1,14 +1,16 @@
-**Vancouver Real Estate Plotting**
+# Vancouver Real Estate Plotting
+
 Scrapes real-estate sold data in the lower-mainland (greater Vancouver area) and creates an interactive visualization of neighborhood-by-neighborhood data viewable in a web browser. 
 
-
+https://user-images.githubusercontent.com/29066986/216793949-61d8fda7-0c5d-47c9-bf33-a21d64b315ae.mp4
 
 Data can be scraped for different property types, including: detached, townhomes, apartments, and all residential. Data can be colorized by: median price, median price per square foot, median days on market, and total number sold. Regardless of how map is colorized, all metrics are visible when cursored over. At the time of writing (Jan 2023), scraped data corresponds to all sales in 2022.
 
-Demo gif/image shows median sale price for detached homes sold in 2022.
+![vancouverRealEstatePlottingDemoImage](https://user-images.githubusercontent.com/29066986/216793975-e050b861-fc71-4a82-a1f3-45b0be622b25.png)
 
+Demo video/image shows median sale price for detached homes sold in 2022.
 
-**Setup**
+## Setup
 
 Install Anaconda or miniconda. (See Note 1)
 
@@ -25,7 +27,7 @@ Download geckodriver.exe from the link below and place in root directory. For 64
 
 https://github.com/mozilla/geckodriver/releases
 
-Create a (free) account on [Zealty.ca](https://www.zealty.ca/). Make sure the password you use is NOT being re-used with other accounts.(See Note 2)
+Create a (free) account on [Zealty.ca](https://www.zealty.ca/). Make sure the password you use is NOT being re-used with other accounts. (See Note 2)
 
 In the root directory, create a file called "ZealtyLogin.txt" that contains the email for your Zealty account on the first line, and the password for your Zealty account on the 2nd line. (See Note 2)
 
