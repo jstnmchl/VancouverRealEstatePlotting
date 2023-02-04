@@ -1,0 +1,23 @@
+**Setup**
+
+Install Anaconda or miniconda (See Note 1)
+Navigate to the desired directory and, in the anaconda prompt, call: 
+	conda env create -f environment.yml
+	conda activate vancouverRealEstatePlotting
+	conda install -c conda-forge geopandas
+	
+
+Download geckodriver.exe and place in root directory 
+	Download link here (for 64 bit windows, look for "...-win64.zip"): https://github.com/mozilla/geckodriver/releases
+
+Create a (free) account on Zealty.ca. Make sure the password you use is NOT being re-used from other accounts.(See Note 2)
+
+In the root directory, create a file called "ZealtyLogin.txt" that contains the email for your Zealty account on the first line and the password for your Zealty account on the 2nd line. (See Note 2)
+
+Call "python runme_makeMaps.py" to scrape, save, and open maps for all property statistics (median price, median price per SqFt, num sold, median days on market) for the selected property type (e.g. "Detached"). This property type can be changed by editing the main function of runme_makeMaps.py
+
+
+Note 1: Installing depencies using pip (atleast on windows) has significant headaches related to installing the C based dependencies of geopandas as described here: https://geopandas.org/en/stable/getting_started/install.html
+(Trust me, I tried.)
+
+Note 2: The login strategy used is **NOT** secure. Plain-text passwords are, in general, a huge security no-no. This is why you should ensure the password you use is not re-used elsewhere. In this case, a security breach with a Zealty account is very low stakes, especially if the account you make is only used for this script.

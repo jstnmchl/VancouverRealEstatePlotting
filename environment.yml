@@ -1,0 +1,7 @@
+name: vancouverRealEstatePlotting
+dependencies:
+  - numpy
+  - pandas
+  - selenium
+  - beautifulsoup4
+  - lxml

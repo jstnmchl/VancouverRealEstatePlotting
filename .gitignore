@@ -1,0 +1,10 @@
+ZealtyLogin.txt
+.idea/*
+*.bak
+*.side
+*.exe
+*.log
+*.html
+*.csv
+*.pyc
+*.json
