@@ -1,4 +1,3 @@
-#import pytest
 import time
 import json
 from selenium import webdriver
@@ -98,8 +97,8 @@ class ZealtyCrawler:
       parsedRow = []
       for element in row:
         parsedRow.extend(element.split(';'))
+        
       #Parse out values of interest from row
-
       if not parsedRow:
         #Empty row indicates header row in table. Don't add to parsed data
         continue
@@ -113,8 +112,6 @@ class ZealtyCrawler:
     columnNames = getValsFromParsedRow([])
 
     parsedTableAsDataFrame = pd.DataFrame(parsedTableAsListOfLists, columns=columnNames)
-
-    #print(parsedTableAsDataFrame)
 
     return parsedTableAsDataFrame
 
@@ -132,26 +129,19 @@ class ZealtyCrawler:
       self.login()
 
     #### Select dates
-    # Number (17) appears to be counting in the drop-down list, starting at 1, downwards including the blank spaces that act as section breaks
-    # Leaving this as 17 rather than "dropdown.find_element(By.XPATH, "//option[. = '2022 JAN-AUG - Summary']")" ensures
-    # that even at a later date (e.g. into October) the same summary will be selected even though the option will then
-    # likely read JAN-SEP instead of JAN-AUG
+    # Number (19) appears to be counting in the drop-down list, starting at 1, downwards including the blank spaces that act as section breaks
+    # As of Jan 2023, index 19 Corresponds to all data from 2022
     #TODO: Remove magic number and make this more robust
     self.driver.find_element(By.CSS_SELECTOR, "#dateSelect > option:nth-child(19)").click()
 
     #### Select property type
     dropdown = self.driver.find_element(By.ID, "typeSelect")
-    
-    #TODO: Add property type as input
     propertyTypeSearchString = "//option[. = '" + propertyType + "']"
     dropdown.find_element(By.XPATH, propertyTypeSearchString).click()
-    #dropdown.find_element(By.XPATH, "//option[. = 'Detached']").click()
 
     #### Select each region
-
     parsedTables = []
-    listOfIndices = range(1, 39) #Hope and Area is 38
-    #listOfIndices = range(1, 5)  # Hope and Area is 38
+    listOfIndices = range(1, 39) #Hope and Area is 38. Beyond that is Gulf Islands, board regions which are not of interest
     for index in listOfIndices:
       cssSelectorString = '#regionSelect > option:nth-child(' + str(index) + ')'
       self.driver.find_element(By.CSS_SELECTOR, cssSelectorString).click()
@@ -166,14 +156,6 @@ class ZealtyCrawler:
 
     allTablesCombined = allTablesCombined.drop_duplicates()
     allTablesCombined.sort_values(by='AreaName', inplace=True, ignore_index=True)
-
-
-
-    #TODO: names of neighborhoods don't quite line up perfectly between datasets (compared them in matlab). Some seem
-    # #to be due to capitalization or formatting issues (e.g. Fraserview VE vs FraserView VE, Yale vs Yale - Dogwood
-    # Valley) while some of the islands seem to be missing in the scraped dataset (e.g. Gabriola island). Figure out
-    # which ones can be salvaged, throw out the remaining entries in the scraped dataset that aren't found in the map
-    # dataset (e.g. aggregate regions) then combine datasets and plot
 
     return allTablesCombined
   
