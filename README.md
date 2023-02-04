@@ -1,3 +1,13 @@
+**Vancouver Real Estate Plotting**
+Scrapes real-estate sold data in the lower-mainland (greater Vancouver area) and creates an interactive visualization of neighborhood-by-neighborhood data viewable in a web browser. 
+
+
+
+Data can be scraped for different property types, including: detached, townhomes, apartments, and all residential. Data can be colorized by: median price, median price per square foot, median days on market, and total number sold. Regardless of how map is colorized, all metrics are visible when cursored over. At the time of writing (Jan 2023), scraped data corresponds to all sales in 2022.
+
+Demo gif/image shows median sale price for detached homes sold in 2022.
+
+
 **Setup**
 
 Install Anaconda or miniconda. (See Note 1)
